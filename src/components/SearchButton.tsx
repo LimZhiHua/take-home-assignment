@@ -38,7 +38,8 @@ interface SearchButtonProps {
 const SearchButton: React.FC<SearchButtonProps> = ({ onClick }) => {
     const theme = useTheme();
     const classes = styles(theme);
-
+    console.log("DELETEME classes is", classes)
+    console.log("DELETEME window size is", window.innerWidth)
     return (
         <Button
             aria-label="Search Button"
@@ -47,8 +48,8 @@ const SearchButton: React.FC<SearchButtonProps> = ({ onClick }) => {
             sx={classes.searchButton}
             onClick={onClick}
         >
-            <Box component="img" src={searchIcon} alt="" sx={classes.searchIcon}></Box>
-            <Typography sx={classes.searchText}>Search</Typography>
+            <Box data-testid="search-icon" component="img" src={searchIcon} alt="" sx={classes.searchIcon}></Box>
+            <Typography data-testid="search-text" sx={classes.searchText}>Search</Typography>
         </Button>
     );
 };
