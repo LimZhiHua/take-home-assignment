@@ -8,10 +8,10 @@ import {
 
 } from "@mui/material";
 import { AxiosError } from "axios";
-import { highlightText } from "../utils";
+import { highlightText } from "../../../utils";
 import SearchButton from "./SearchButton";
-import { fetchSearchResults, fetchSuggestions } from "../apis/Search";
-import { SearchResultResponse } from "../pages/Search";
+import { fetchSearchResults, fetchSuggestions } from "../../../apis/Search";
+import { SearchResultResponse } from "../Search";
 import { Theme } from '@mui/material/styles';
 
 const styles = (theme: Theme) => ({

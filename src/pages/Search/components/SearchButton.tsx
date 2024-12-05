@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Button, Typography, useTheme } from '@mui/material';
-import searchIcon from '../icons/search.svg';
+import searchIcon from '../../../icons/search.svg';
 import { Theme } from '@mui/material/styles';
 
 const styles = (theme: Theme) => ({
@@ -25,6 +25,7 @@ const styles = (theme: Theme) => ({
     },
     searchText: {
         fontSize: "16px",
+        color: "var(--color-white)",
         [theme.breakpoints.down("md")]: {
             fontSize: "8px",
         },
@@ -38,8 +39,6 @@ interface SearchButtonProps {
 const SearchButton: React.FC<SearchButtonProps> = ({ onClick }) => {
     const theme = useTheme();
     const classes = styles(theme);
-    console.log("DELETEME classes is", classes)
-    console.log("DELETEME window size is", window.innerWidth)
     return (
         <Button
             aria-label="Search Button"

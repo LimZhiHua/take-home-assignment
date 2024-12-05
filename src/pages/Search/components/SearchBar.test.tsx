@@ -2,15 +2,10 @@ import React from "react";
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import SearchBar from "./SearchBar";
-import { fetchSearchResults, fetchSuggestions } from "../apis/Search";
+import { fetchSearchResults, fetchSuggestions } from "../../../apis/Search";
 import { AxiosError } from "axios";
 
-jest.mock("../apis/Search");
-jest.mock('@lifesg/react-design-system/masthead', () => {
-    return {
-        Masthead: () => <div>Mock Masthead</div>, // Return a simple component or a placeholder
-    };
-});
+jest.mock("../../../apis/Search");
 
 describe("SearchBar Component", () => {
     const mockSetSearchResults = jest.fn();
