@@ -71,7 +71,7 @@ describe('SearchResults Component', () => {
     it('renders document titles and excerpts correctly', () => {
         render(<SearchResults searchResults={mockSearchResults} searchQuery={searchQuery} />);
 
-        // it has "<mark>" because our searchQuery is "Example"
+        // it has "<mark>" because our searchQuery is "Example" and it highlights the searchQuery text
         expect(screen.getByText('<mark>Example</mark> Document 1')).toBeInTheDocument();
         expect(screen.getByText('<mark>Example</mark> Document 2')).toBeInTheDocument();
 

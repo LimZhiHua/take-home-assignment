@@ -88,6 +88,12 @@ const SearchBar: React.FC<SearchButtonProps> = ({ setSearchResults, setShowError
         }
     }, [debouncedSearch, searchQuery]);
 
+    useEffect(() => {
+        return () => {
+            debouncedSearch.clear(); // Clear any pending debounced actions
+        };
+    }, [debouncedSearch]);
+
     const getSearchInfo = async (searchValue: string) => {
         if (searchValue) {
             try {
@@ -113,18 +119,6 @@ const SearchBar: React.FC<SearchButtonProps> = ({ setSearchResults, setShowError
         }
     }
 
-    const runSearchWithSelectedOption = async (
-        _: React.SyntheticEvent,
-        value: string | null
-    ) => {
-        if (value) {
-            await getSearchInfo(value);
-        }
-    };
-
-    const handleInputChange = (_: React.SyntheticEvent, value: string) => {
-        setSearchQuery(value);
-    };
 
     return (
         <>
@@ -164,8 +158,17 @@ const SearchBar: React.FC<SearchButtonProps> = ({ setSearchResults, setShowError
                     </li>
 
                 )}
-                onInputChange={handleInputChange}
-                onChange={runSearchWithSelectedOption}
+                onInputChange={(_: React.SyntheticEvent, value: string) => {
+                    setSearchQuery(value);
+                }}
+                onChange={(
+                    _: React.SyntheticEvent,
+                    value: string | null
+                ) => {
+                    if (value) {
+                        getSearchInfo(value);
+                    }
+                }}
             />
             <SearchButton onClick={() => { getSearchInfo(searchQuery) }} /></>
     );

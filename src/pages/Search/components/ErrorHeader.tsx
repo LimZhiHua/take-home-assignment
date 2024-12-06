@@ -1,14 +1,12 @@
 import React from "react";
 import { NotificationBanner } from "@lifesg/react-design-system/notification-banner";
 
-// Define the type for the props
 interface ErrorBannerProps {
     showHeader: boolean;
     onClick: () => void;
     message: string;
 }
 
-// Define the ErrorBanner component
 const ErrorBanner: React.FC<ErrorBannerProps> = ({ showHeader, onClick, message }) => {
     if (showHeader) {
         return (
